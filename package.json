@@ -1,0 +1,14 @@
+{
+  "name": "mdv",
+  "version": "1.0.0",
+  "description": "Markdown Validator",
+  "main": "index.js",
+  "repository": {},
+  "author": "Mike Ralphson <mike.ralphson@gmail.com>",
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "markdown-it": "^8.3.1",
+    "yargs": "^7.0.2"
+  }
+}
