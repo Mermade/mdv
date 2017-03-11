@@ -15,12 +15,20 @@ function validate(s,options) {
 	var elements = $("a").each(function () {
 		var name = $(this).attr('name');
 		if (name) {
-			var anchor = {
-				name: name,
-				defined: true,
-				seen: 0
-			};
-			anchors.push(anchor);
+			var anchor = anchors.find(function(e,i,a){
+				return e.name == name;
+			});
+			if (anchor) {
+				anchor.defined++;
+			}
+			else {
+				anchor = {
+					name: name,
+					defined: 1,
+					seen: 0
+				};
+				anchors.push(anchor);
+			}
 		}
 	});
 
@@ -33,6 +41,7 @@ function validate(s,options) {
 			if (local) {
 				var ptr = href.replace('#','');
 				var anchor = anchors.find(function(e,i,a){
+					// fragment names are case-sensitive: https://www.w3.org/MarkUp/html-spec/html-spec_7.html#SEC7.4
 					return e.name == ptr;
 				});
 				if (anchor) {
@@ -41,7 +50,7 @@ function validate(s,options) {
 				else {
 					anchor = {
 						name: ptr,
-						defined: false,
+						defined: 0,
 						seen: 1
 					};
 					anchors.push(anchor);
@@ -52,7 +61,10 @@ function validate(s,options) {
 
 	var result = {};
 	result.missingAnchors = anchors.filter(function(e,i,a){
-		return (!e.defined && e.seen>0);
+		return (e.defined==0 && e.seen>0);
+    });
+	result.duplicatedAnchors = anchors.filter(function(e,i,a){
+		return (e.defined>1);
     });
 
 	return result;
