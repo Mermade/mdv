@@ -19,13 +19,15 @@ var argv = require('yargs')
     .strict()
     .argv;
 
-var s = fs.readFileSync(argv._[0],'utf8');
-var options = {};
-options.source = argv._[0];
-var result = validator.validate(s,options);
-console.log(util.inspect(result));
-
 var exitCode = 0;
-if (result.missingAnchors.length>0) exitCode = 1;
+var options = {};
+for (var a of argv._) {
+	var s = fs.readFileSync(a,'utf8');
+	options.source = a;
+	var result = validator.validate(s,options);
+	console.log(util.inspect(result));
+
+	if (result.missingAnchors.length>0) exitCode = 1;
+}
 
 process.exit(exitCode);
