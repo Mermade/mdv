@@ -21,11 +21,18 @@ var result = mdv.validate(markdownString);
 ### Example output
 
 ````javascript
-{ missingAnchors:
-   [ { name: 'dataTypeType', defined: 0, seen: 1 },
-     { name: 'stType', defined: 0, seen: 2 },
-     { name: 'securityDefinitions', defined: 0, seen: 1 } ],
-  duplicatedAnchors:
-   [ { name: 'itemsMaximum', defined: 2, seen: 0 },
-     { name: 'headerMaximum', defined: 2, seen: 0 } ] }
+{ source: '../OpenAPI-specification/versions/3.0.md',
+  missingAnchors:
+   [ { name: 'definitions', defined: 0, seen: 1 },
+     { name: 'specification', defined: 0, seen: 1 },
+     { name: 'format', defined: 0, seen: 1 },
+     { name: 'schema', defined: 0, seen: 1 },
+     { name: 'linkObject', defined: 0, seen: 4 },
+     { name: 'dataTypeType', defined: 0, seen: 2 },
+     { name: 'oasParameters', defined: 0, seen: 2 },
+     { name: 'requestBody', defined: 0, seen: 1 },
+     { name: 'oasResponses', defined: 0, seen: 2 },
+     { name: 'ReferenceObject', defined: 0, seen: 1 } ],
+  duplicatedAnchors: [] }
 ````
+

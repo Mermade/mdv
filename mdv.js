@@ -20,7 +20,9 @@ var argv = require('yargs')
     .argv;
 
 var s = fs.readFileSync(argv._[0],'utf8');
-var result = validator.validate(s,{});
+var options = {};
+options.source = argv._[0];
+var result = validator.validate(s,options);
 console.log(util.inspect(result));
 
 var exitCode = 0;

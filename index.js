@@ -60,6 +60,7 @@ function validate(s,options) {
 	});
 
 	var result = {};
+	if (options.source) result.source = options.source;
 	result.missingAnchors = anchors.filter(function(e,i,a){
 		return (e.defined==0 && e.seen>0);
     });
