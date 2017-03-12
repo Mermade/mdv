@@ -3,7 +3,24 @@
   "version": "1.0.0",
   "description": "Markdown Validator",
   "main": "index.js",
-  "repository": {},
+  "bin": {
+  	"mdv": "./mdv.js"
+  },
+  "keywords": [
+  	"markdown",
+	"validator",
+	"validation",
+	"link",
+	"links",
+	"image",
+	"images",
+	"a11y",
+	"accessibility"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mermade/mdv.git"
+  },
   "author": "Mike Ralphson <mike.ralphson@gmail.com>",
   "license": "BSD-3-Clause",
   "dependencies": {
