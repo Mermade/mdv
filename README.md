@@ -1,6 +1,7 @@
 # mdv
 
-A tiny markdown (link) validator
+A tiny markdown (link) validator. It returns an exitCode of 1 if any internal links are broken,
+making it suitable for use in CI environment.
 
 ## Usage
 
