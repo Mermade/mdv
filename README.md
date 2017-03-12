@@ -1,6 +1,18 @@
 # mdv
 
-A tiny markdown (link) validator. It understands [GFM auto-links](https://gist.github.com/asabaylus/3071099), and returns an exitCode of 1 if any internal links are broken, making it suitable for use in CI environments.
+A tiny markdown validator. It understands [GFM auto-links](https://gist.github.com/asabaylus/3071099), and returns an exitCode of 1 if any rules are violated, making it suitable for use in CI environments.
+
+## Errors
+
+* Undefined internal link targets
+* Duplicated internal link targets
+* Anchors containing the # character
+* Images without an `alt` tag
+
+## Warnings
+
+* Internal anchors with no links pointing to them
+* Links with empty text
 
 ## Usage
 

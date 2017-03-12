@@ -40,7 +40,7 @@ for (var a of argv._) {
 	console.log(util.inspect(result));
 
 	if (result.missingAnchors.length || result.duplicatedAnchors.length ||
-		result.anchorsWithHash.length) exitCode = 1;
+		result.anchorsWithHash.length || result.imagesWithMissingAlt) exitCode = 1;
 }
 
 process.exit(exitCode);

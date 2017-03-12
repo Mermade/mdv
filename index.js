@@ -40,7 +40,7 @@ function validate(s,options) {
 
 	var anchors = [];
 
-	var elements = $("a").each(function () {
+	$("a").each(function () {
 		var name = $(this).attr('name');
 		if (name) {
 			define(anchors,name,false);
@@ -55,7 +55,7 @@ function validate(s,options) {
 		});
 	}
 
-	var elements = $("a").each(function () {
+	$("a").each(function () {
 		var href = $(this).attr('href');
 		if (href) {
 			var local = true;
@@ -84,8 +84,16 @@ function validate(s,options) {
 			}
 		}
 	});
-
+	
 	var result = {};
+	result.imagesWithMissingAlt = 0;
+
+	$("img").each(function() {
+		if (!$(this).attr('alt')) {
+			result.imagesWithMissingAlt++;	
+		}
+	});
+
 	if (options.source) result.source = options.source;
 	result.missingAnchors = anchors.filter(function(e,i,a){
 		return (!e.defined && e.seen && !e.name.indexOf('.md'));
