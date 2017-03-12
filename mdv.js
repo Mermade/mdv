@@ -15,19 +15,32 @@ var argv = require('yargs')
     .alias('h','help')
     .string('outfile')
     .alias('o','outfile')
+	.boolean('save')
+	.alias('s','save')
+	.describe('save','save intermediary html output')
+	.boolean('warnings')
+	.alias('w','warnings')
+	.describe('warnings','enable warnings')
     .require(1)
     .strict()
     .argv;
 
 var exitCode = 0;
-var options = {};
+var options = argv;
 for (var a of argv._) {
 	var s = fs.readFileSync(a,'utf8');
 	options.source = a;
 	var result = validator.validate(s,options);
+
+	if (options.save) {
+		fs.writeFileSync(a+'.html',options.html,'utf8');
+		delete options.html;
+	}
+
 	console.log(util.inspect(result));
 
-	if (result.missingAnchors.length>0) exitCode = 1;
+	if (result.missingAnchors.length || result.duplicatedAnchors.length ||
+		result.anchorsWithHash.length) exitCode = 1;
 }
 
 process.exit(exitCode);

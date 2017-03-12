@@ -1,13 +1,14 @@
 # mdv
 
-A tiny markdown (link) validator. It returns an exitCode of 1 if any internal links are broken,
-making it suitable for use in CI environment.
+A tiny markdown (link) validator. It understands [GFM auto-links](https://gist.github.com/asabaylus/3071099), and returns an exitCode of 1 if any internal links are broken, making it suitable for use in CI environments.
 
 ## Usage
 
 ````
 Options:
   -d, --debug  enable debug mode                                       [boolean]
+  -s, --save   save intermediary html                                  [boolean]
+  -w, --warnings  enable warnings                                      [boolean]
   -h, --help   Show help                                               [boolean]
 ````
 
