@@ -13,7 +13,6 @@ function gfmLink(text) {
 	text = text.split('.').join('');
 	text = text.split(' ').join('-');
 	return text;
-	//return text.trim().toLowerCase().replace(/[^\w\- ]+/g, ' ').replace(/\s+/g, '-').replace(/\-+$/, '');
 }
 
 function define(anchors,name,auto) {
@@ -78,7 +77,7 @@ function validate(s,options) {
 					};
 					anchors.push(anchor);
 				}
-				if ($(this).text()) {
+				if (!$(this).text()) {
 					anchor.emptyText = anchor.emptyText ? anchor.emptyText++ : 1;
 				}
 			}
@@ -104,12 +103,22 @@ function validate(s,options) {
 	result.anchorsWithHash = anchors.filter(function(e,i,a){
 		return (e.name.startsWith('#'));
     });
+	result.anchorsWithEmptyText = anchors.filter(function(e,i,a){
+		return (e.emptyText);
+   	});
+
+	result.codeBlocksWithNoLanguage = 0;
+	$("pre > code").each(function(){
+		var classes = ($(this).attr('class')||'').split(' ');
+		var lang = classes.find(function(e,i,a){
+			return e.startsWith('language');
+		});
+		if (!lang) result.codeBlocksWithNoLanguage++;
+	});
+
 	if (options.warnings) {
 		result.anchorsWithNoLinks = anchors.filter(function(e,i,a){
 			return (e.defined && !e.seen && !e.auto);
-   		});
-		result.anchorsWithEmptyText = anchors.filter(function(e,i,a){
-			return (e.emptyText);
    		});
 	}
 

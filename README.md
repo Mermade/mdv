@@ -4,15 +4,16 @@ A tiny markdown validator. It understands [GFM auto-links](https://gist.github.c
 
 ## Errors
 
-* Undefined internal link targets
-* Duplicated internal link targets
-* Anchors containing the # character
-* Images without an `alt` tag
+* Undefined internal link targets - `missingAnchors[]`
+* Duplicated internal link targets - `duplicatedAnchors[]`
+* Anchors containing the # character - `anchorsWithHash[]`
+* Links with empty text - `anchorsWithEmptyText[]`
+* Images without an `alt` tag - `imagesWithMissingAlt`
+* Code-blocks with no language specified - `codeBlocksWithNoLanguage`
 
 ## Warnings
 
-* Internal anchors with no links pointing to them
-* Links with empty text
+* Internal manually-defined anchors with no links pointing to them
 
 ## Usage
 
