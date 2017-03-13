@@ -11,6 +11,8 @@ function gfmLink(text) {
 	text = text.trim().toLowerCase();
 	text = text.split("'").join('');
 	text = text.split('.').join('');
+	text = text.split('`').join('');
+	text = text.split(':').join('');
 	text = text.split(' ').join('-');
 	return text;
 }
@@ -94,15 +96,19 @@ function validate(s,options) {
 	});
 
 	if (options.source) result.source = options.source;
+
 	result.missingAnchors = anchors.filter(function(e,i,a){
-		return (!e.defined && e.seen && !e.name.indexOf('.md'));
+		return (!e.defined && e.seen && e.name.indexOf('.md')<0);
     });
+
 	result.duplicatedAnchors = anchors.filter(function(e,i,a){
 		return (e.defined>1);
     });
+
 	result.anchorsWithHash = anchors.filter(function(e,i,a){
 		return (e.name.startsWith('#'));
     });
+
 	result.anchorsWithEmptyText = anchors.filter(function(e,i,a){
 		return (e.emptyText);
    	});
