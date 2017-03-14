@@ -87,6 +87,7 @@ function validate(s,options) {
 	});
 	
 	var result = {};
+	if (options.source) result.source = options.source;
 	result.imagesWithMissingAlt = 0;
 
 	$("img").each(function() {
@@ -94,8 +95,6 @@ function validate(s,options) {
 			result.imagesWithMissingAlt++;	
 		}
 	});
-
-	if (options.source) result.source = options.source;
 
 	result.missingAnchors = anchors.filter(function(e,i,a){
 		return (!e.defined && e.seen && e.name.indexOf('.md')<0);

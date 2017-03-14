@@ -37,11 +37,26 @@ for (var a of argv._) {
 		delete options.html;
 	}
 
-	console.log(util.inspect(result));
+	var ok = true;
+	for (var p in result) {
+		if (typeof result[p] == 'number') {
+			if (result[p]) ok = false
+			else delete result[p];
+		}
+		else if (Array.isArray(result[p])) {
+			if (result[p].length) ok = false
+			else delete result[p];
+		}
+		else if (typeof result[p] == 'object') {
+			if (Object.keys(result[p]).length) ok = false
+			else delete result[p];
+		}
+	}
+	if (!ok) {
+		console.log(util.inspect(result));
+		exitCode = 1;
+	}
 
-	if (result.missingAnchors.length || result.duplicatedAnchors.length ||
-		result.anchorsWithHash.length || result.imagesWithMissingAlt ||
-		result.anchorsWithEmptyText.length || result.codeBlocksWithNoLanguages) exitCode = 1;
 }
 
 process.exit(exitCode);
