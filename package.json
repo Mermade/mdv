@@ -1,21 +1,21 @@
 {
   "name": "mdv",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Markdown Validator",
   "main": "index.js",
   "bin": {
-  	"mdv": "./mdv.js"
+    "mdv": "./mdv.js"
   },
   "keywords": [
-  	"markdown",
-	"validator",
-	"validation",
-	"link",
-	"links",
-	"image",
-	"images",
-	"a11y",
-	"accessibility"
+    "markdown",
+    "validator",
+    "validation",
+    "link",
+    "links",
+    "image",
+    "images",
+    "a11y",
+    "accessibility"
   ],
   "repository": {
     "type": "git",
