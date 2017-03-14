@@ -9,11 +9,11 @@ A tiny markdown validator. It understands [GFM auto-links](https://gist.github.c
 * Anchors containing the # character - `anchorsWithHash[]`
 * Links with empty text - `anchorsWithEmptyText[]`
 * Images without an `alt` tag - `imagesWithMissingAlt`
-* Code-blocks with no language specified - `codeBlocksWithNoLanguage`
 
 ## Warnings
 
 * Internal manually-defined anchors with no links pointing to them
+* Code-blocks with no language specified - `codeBlocksWithNoLanguage`
 
 ## Usage
 

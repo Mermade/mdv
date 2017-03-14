@@ -112,16 +112,16 @@ function validate(s,options) {
 		return (e.emptyText);
    	});
 
-	result.codeBlocksWithNoLanguage = 0;
-	$("pre > code").each(function(){
-		var classes = ($(this).attr('class')||'').split(' ');
-		var lang = classes.find(function(e,i,a){
-			return e.startsWith('language');
-		});
-		if (!lang) result.codeBlocksWithNoLanguage++;
-	});
-
 	if (options.warnings) {
+		result.codeBlocksWithNoLanguage = 0;
+		$("pre > code").each(function(){
+			var classes = ($(this).attr('class')||'').split(' ');
+			var lang = classes.find(function(e,i,a){
+				return e.startsWith('language');
+			});
+			if (!lang) result.codeBlocksWithNoLanguage++;
+		});
+
 		result.anchorsWithNoLinks = anchors.filter(function(e,i,a){
 			return (e.defined && !e.seen && !e.auto);
    		});
