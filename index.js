@@ -17,12 +17,19 @@ function gfmLink(text) {
 	return text;
 }
 
-function define(anchors,name,auto) {
+function define(anchors,name,auto,suffix) {
+	var oname = name;
+	if (suffix) name = name+'-'+suffix;
 	var anchor = anchors.find(function(e,i,a){
 		return e.name == name;
 	});
 	if (anchor) {
-		if (!auto) anchor.defined++;
+		if (auto) {
+			define(anchors,oname,auto,suffix ? suffix+1 : 1);
+		}
+		else {
+			anchor.defined++;
+		}
 	}
 	else {
 		anchor = {
