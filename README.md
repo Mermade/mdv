@@ -30,7 +30,7 @@ Options:
 ````javascript
 var mdv = require('mdv');
 var options = {};
-var result = mdv.validate(markdownString);
+var result = mdv.validate(markdownString,options);
 ````
 
 ### Example output
