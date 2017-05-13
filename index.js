@@ -17,6 +17,8 @@ function gfmLink(text) {
 	text = text.split('/').join('');
 	text = text.split('&lt;').join('');
 	text = text.split('&gt;').join('');
+	text = text.split('<').join('');
+	text = text.split('>').join('');
 	text = text.split(' ').join('-');
 	return text;
 }
