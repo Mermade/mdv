@@ -3,6 +3,9 @@
   "version": "1.0.5",
   "description": "Markdown Validator",
   "main": "index.js",
+  "scripts": {
+    "test": "node testRunner -f test/fail test/pass"
+  } ,
   "bin": {
     "mdv": "./mdv.js"
   },
@@ -27,5 +30,8 @@
     "cheerio": "^0.22.0",
     "markdown-it": "^8.3.1",
     "yargs": "^7.0.2"
+  },
+  "devDependencies": {
+    "node-readfiles": "^0.2.0"
   }
 }
