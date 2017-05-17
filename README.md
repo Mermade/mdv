@@ -1,6 +1,6 @@
 # mdv
 
-A tiny markdown validator. It understands [GFM auto-links](https://gist.github.com/asabaylus/3071099), and returns an exitCode of 1 if any rules are violated, making it suitable for use in CI environments.
+A tiny markdown validator. It understands [GFM auto-links](https://gist.github.com/asabaylus/3071099), and returns an exitCode of 1 if any rules are violated, making it suitable for use in CI environments. It is in use by the [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification) and the [AsyncAPI Specification](https://github.com/asyncapi/asyncapi), amongst others.
 
 ## Errors
 
@@ -17,25 +17,25 @@ A tiny markdown validator. It understands [GFM auto-links](https://gist.github.c
 
 ## Usage
 
-````
+```
 Options:
   -d, --debug  enable debug mode                                       [boolean]
   -s, --save   save intermediary html                                  [boolean]
   -w, --warnings  enable warnings                                      [boolean]
   -h, --help   Show help                                               [boolean]
-````
+```
 
 ### API
 
-````javascript
+```javascript
 var mdv = require('mdv');
 var options = {};
 var result = mdv.validate(markdownString,options);
-````
+```
 
 ### Example output
 
-````javascript
+```javascript
 { imagesWithMissingAlt: 0,
   source: '../openapi-specification/versions/2.0.md',
   missingAnchors:
@@ -48,5 +48,5 @@ var result = mdv.validate(markdownString,options);
   anchorsWithHash: [],
   anchorsWithEmptyText: [],
   codeBlocksWithNoLanguage: 1 }
-````
+```
 
