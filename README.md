@@ -1,5 +1,7 @@
 # mdv
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Mermade/mdv.svg)](https://greenkeeper.io/)
+
 A tiny markdown validator. It understands [GFM auto-links](https://gist.github.com/asabaylus/3071099), and returns an exitCode of 1 if any rules are violated, making it suitable for use in CI environments. It is in use by the [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification) and the [AsyncAPI Specification](https://github.com/asyncapi/asyncapi), amongst others.
 
 ## Errors
