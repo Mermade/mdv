@@ -74,7 +74,7 @@ function validate(s,options) {
 		if (href) {
 			var local = true;
 			var u = url.parse(href);
-			if (u.protocol) local = false;
+			if (u.protocol || (u.path && u.path.startsWith('/')) || (u.path && u.path.startsWith('..'))) local = false;
 			if (local) {
 				var ptr = href.replace('#','');
 				var anchor = anchors.find(function(e,i,a){
