@@ -1,11 +1,11 @@
 {
   "name": "mdv",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Markdown Validator",
   "main": "index.js",
   "scripts": {
     "test": "node testRunner -f test/fail test/pass"
-  } ,
+  },
   "bin": {
     "mdv": "./mdv.js"
   },
