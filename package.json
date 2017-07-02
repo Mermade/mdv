@@ -27,7 +27,7 @@
   "author": "Mike Ralphson <mike.ralphson@gmail.com>",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "cheerio": "^0.22.0",
+    "cheerio": "^1.0.0-rc.2",
     "markdown-it": "^8.3.1",
     "yargs": "^8.0.1"
   },
