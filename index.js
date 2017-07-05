@@ -76,6 +76,7 @@ function validate(s,options) {
 			var u = url.parse(href);
 			if (u.protocol || (u.path && u.path.startsWith('/')) || (u.path && u.path.startsWith('..'))) local = false;
 			if (local) {
+				var localRefNoHash = !href.startsWith('#');
 				var ptr = href.replace('#','');
 				var anchor = anchors.find(function(e,i,a){
 					// fragment names are case-sensitive: https://www.w3.org/MarkUp/html-spec/html-spec_7.html#SEC7.4
@@ -83,12 +84,14 @@ function validate(s,options) {
 				});
 				if (anchor) {
 					anchor.seen++;
+					if (localRefNoHash) anchor.localRefNoHash = true;
 				}
 				else {
 					anchor = {
 						name: ptr,
 						defined: 0,
-						seen: 1
+						seen: 1,
+						localRefNoHash: localRefNoHash
 					};
 					anchors.push(anchor);
 				}
@@ -122,8 +125,12 @@ function validate(s,options) {
     });
 
 	result.anchorsWithEmptyText = anchors.filter(function(e,i,a){
-		return (e.emptyText);
+		return e.emptyText;
    	});
+
+	result.localRefNoHash = anchors.filter(function(e,i,a){
+		return e.localRefNoHash;
+	});
 
 	if (options.warnings) {
 		result.codeBlocksWithNoLanguage = 0;

@@ -11,6 +11,7 @@ A tiny markdown validator. It understands [GFM auto-links](https://gist.github.c
 * Duplicated internal link targets - `duplicatedAnchors[]`
 * Anchors containing the # character - `anchorsWithHash[]`
 * Links with empty text - `anchorsWithEmptyText[]`
+* Local Refs without # character - `localRefNoHash[]`
 * Images without an `alt` tag - `imagesWithMissingAlt`
 
 ## Warnings
