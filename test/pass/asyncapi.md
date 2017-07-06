@@ -41,7 +41,7 @@ These files can then be used to create utilities, such as documentation, integra
 		- [Base Topic String](#baseTopicString)
 		- [Schemes List](#schemesList)
 		- [Topics Object](#topicsObject)
-		- [Topic Item Object](topicItemObject)
+		- [Topic Item Object](#topicItemObject)
 		- [Message Object](#messageObject)
 		- [Tag Object](#tagObject)
 		- [External Documentation Object](#externalDocumentationObject)

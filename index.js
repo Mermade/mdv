@@ -75,6 +75,7 @@ function validate(s,options) {
 			var local = true;
 			var u = url.parse(href);
 			if (u.protocol || (u.path && u.path.startsWith('/')) || (u.path && u.path.startsWith('..'))) local = false;
+			if ((href.indexOf('.md')>=0) || (href.indexOf('.html')>=0)) local = false;
 			if (local) {
 				var localRefNoHash = !href.startsWith('#');
 				var ptr = href.replace('#','');
