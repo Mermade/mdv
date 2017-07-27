@@ -7,6 +7,8 @@ var md = require('markdown-it')({linkify: true, html: true});
 
 var cheerio = require('cheerio');
 
+var exampleValidator = require('./parseExamples.js');
+
 function gfmLink(text) {
 	text = text.trim().toLowerCase();
 	text = text.split("'").join('');
@@ -132,6 +134,8 @@ function validate(s,options) {
 	result.localRefNoHash = anchors.filter(function(e,i,a){
 		return e.localRefNoHash;
 	});
+
+	result.nonParsingExamples = exampleValidator.parseExamples(s,options);
 
 	if (options.warnings) {
 		result.codeBlocksWithNoLanguage = 0;

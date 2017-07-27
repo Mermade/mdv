@@ -9,6 +9,9 @@ var mdv = require('./index.js');
 
 var argv = require('yargs')
 	.usage('testRunner [options] [{path-to-specs}...]')
+	.boolean('debug')
+	.alias('d','debug')
+	.describe('debug','pass debug flag to mdv')
 	.string('encoding')
 	.alias('e','encoding')
 	.default('encoding','utf8')
