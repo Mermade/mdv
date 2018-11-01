@@ -57,7 +57,7 @@ function validate(s,options) {
 	var anchors = [];
 
 	$("a").each(function () {
-		var name = $(this).attr('name');
+		var name = $(this).attr('id') || $(this).attr('name');
 		if (name) {
 			define(anchors,name,false);
 		}
