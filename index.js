@@ -9,6 +9,14 @@ var cheerio = require('cheerio');
 
 var exampleValidator = require('./parseExamples.js');
 
+function indexAnyOf(s,a) {
+	for (let comp of a) {
+		let tmp = s.indexOf(comp);
+		if (tmp >= 0) return tmp;
+	}
+	return -1;
+}
+
 function gfmLink(text) {
 	text = text.trim().toLowerCase();
 	text = text.split("'").join('');
@@ -77,7 +85,7 @@ function validate(s,options) {
 			var local = true;
 			var u = url.parse(href);
 			if (u.protocol || (u.path && u.path.startsWith('/')) || (u.path && u.path.startsWith('..'))) local = false;
-			if ((href.indexOf('.md')>=0) || (href.indexOf('.html')>=0)) local = false;
+			if (indexAnyOf(href,['.md','.html','.json','.yaml','.yml'])>=0) local = false;
 			if (local) {
 				var localRefNoHash = !href.startsWith('#');
 				var ptr = href.replace('#','');
@@ -116,7 +124,7 @@ function validate(s,options) {
 	});
 
 	result.missingAnchors = anchors.filter(function(e,i,a){
-		return (!e.defined && e.seen && e.name.indexOf('.md')<0);
+		return (!e.defined && e.seen && indexAnyOf(e.name,['.md','.html','.json','.yaml','.yml'])<0);
     });
 
 	result.duplicatedAnchors = anchors.filter(function(e,i,a){
