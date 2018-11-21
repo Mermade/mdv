@@ -3,6 +3,7 @@
 const fs = require('fs');
 const yaml = require('js-yaml');
 const xml2json = require('jgexml/xml2json').xml2json;
+const abnf = require('abnf');
 
 function parseExamples(s,options) {
 
@@ -59,6 +60,20 @@ function parseExamples(s,options) {
 						result.push(entry);
 						return result;
                    }
+                }
+
+                if (extension === 'abnf') {
+                    abnf.Parse(example,function(err,rules){
+                        if (err) {
+						    let entry = {};
+						    entry.lineStart = lineStart;
+						    entry.lineEnd = lineNo;
+						    entry.extension = extension;
+						    entry.message = err;
+						    result.push(entry);
+						    return result;
+                        }
+                    });
                 }
 
 				example = '';

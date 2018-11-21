@@ -27,6 +27,7 @@
   "author": "Mike Ralphson <mike.ralphson@gmail.com>",
   "license": "BSD-3-Clause",
   "dependencies": {
+    "abnf": "0.0.5",
     "cheerio": "^0.22.0",
     "jgexml": "^0.3.9",
     "js-yaml": "^3.6.1",

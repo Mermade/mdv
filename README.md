@@ -13,7 +13,7 @@ A tiny markdown validator. It understands [GFM auto-links](https://gist.github.c
 * Links with empty text - `anchorsWithEmptyText[]`
 * Local Refs without # character - `localRefNoHash[]`
 * Images without an `alt` tag - `imagesWithMissingAlt[]`
-* `yaml` or `json` examples which do not parse - `nonParsingExamples[]`
+* `yaml`, `json`, `xml` or `abnf` examples which do not parse - `nonParsingExamples[]`
 
 ## Warnings
 
