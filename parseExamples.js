@@ -1,7 +1,8 @@
 'use strict';
 
-var fs = require('fs');
-var yaml = require('js-yaml');
+const fs = require('fs');
+const yaml = require('js-yaml');
+const xml2json = require('jgexml/xml2json').xml2json;
 
 function parseExamples(s,options) {
 
@@ -45,6 +46,21 @@ function parseExamples(s,options) {
 						return result;
 					}
 				}
+
+                if (extension === 'xml') {
+                   let obj = xml2json(example);
+                   if (options.debug) console.log(JSON.stringify(obj));
+                   if (Object.keys(obj).length !== 1) {
+						let entry = {};
+						entry.lineStart = lineStart;
+						entry.lineEnd = lineNo;
+						entry.extension = extension;
+						entry.message = 'No root element found';
+						result.push(entry);
+						return result;
+                   }
+                }
+
 				example = '';
 				counter++;
 				extension = 'txt';
@@ -53,7 +69,7 @@ function parseExamples(s,options) {
 			else {
 				inFence = true;
 				lineStart = lineNo;
-				extension = line.split('`').pop().trim();
+				extension = line.split('`').pop().trim().toLowerCase();
 				if (!extension) extension = 'txt';
 			}
 		}
