@@ -19,6 +19,7 @@ A tiny markdown validator. It understands [GFM auto-links](https://gist.github.c
 
 * Internal manually-defined anchors with no links pointing to them
 * Code-blocks with no language specified - `codeBlocksWithNoLanguage`
+* Four or more leading backticks at the beginning of a line
 
 ## Usage
 
@@ -33,9 +34,9 @@ Options:
 ### API
 
 ```javascript
-var mdv = require('mdv');
-var options = {};
-var result = mdv.validate(markdownString,options);
+const mdv = require('mdv');
+const options = {};
+const result = mdv.validate(markdownString,options);
 ```
 
 ### Example output
