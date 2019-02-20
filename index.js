@@ -58,7 +58,20 @@ function define(anchors,name,auto,suffix) {
     }
 }
 
-function validate(s,options) {
+function validate(s, options) {
+    const result = {};
+    if (options.source) result.source = options.source;
+    result.imagesWithMissingAlt = 0;
+
+    if (options.warnings) {
+        result.tooManyBackticks = 0;
+        const lines = s.split('\r').join('').split('\n');
+        for (let line of lines) {
+            if (line.startsWith('````')) {
+                result.tooManyBackticks++;
+            }
+        }
+    }
     var html = md.render(s);
     var $ = cheerio.load(html);
 
@@ -113,10 +126,6 @@ function validate(s,options) {
         }
     });
 
-    var result = {};
-    if (options.source) result.source = options.source;
-    result.imagesWithMissingAlt = 0;
-
     $("img").each(function() {
         if (!$(this).attr('alt')) {
             result.imagesWithMissingAlt++;
@@ -137,7 +146,7 @@ function validate(s,options) {
 
     result.anchorsWithEmptyText = anchors.filter(function(e,i,a){
         return e.emptyText;
-       });
+    });
 
     result.localRefNoHash = anchors.filter(function(e,i,a){
         return e.localRefNoHash;
@@ -157,7 +166,7 @@ function validate(s,options) {
 
         result.anchorsWithNoLinks = anchors.filter(function(e,i,a){
             return (e.defined && !e.seen && !e.auto);
-           });
+        });
     }
 
     if (options.save) {

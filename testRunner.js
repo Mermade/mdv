@@ -69,6 +69,8 @@ function check(file,force,expectFailure) {
 
     if ((name.endsWith('.md')) || force) {
 
+        options.warnings = name.startsWith('warn-');
+
         var srcStr = fs.readFileSync(path.resolve(file),options.encoding);
         var output = {failed:true};
         var result = false;
