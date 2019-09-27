@@ -1,7 +1,7 @@
 'use strict';
 
 const fs = require('fs');
-const yaml = require('js-yaml');
+const yaml = require('yaml');
 const xml2json = require('jgexml/xml2json').xml2json;
 const abnf = require('abnf');
 
@@ -28,9 +28,9 @@ function parseExamples(s,options) {
                     }
                     var obj = {};
                     try {
-                        obj = yaml.load(example,{json:false});
+                        obj = yaml.parse(example);
                         if (extension === 'yaml') {
-                            example = yaml.dump(obj,{lineWidth:-1});
+                            example = yaml.stringify(obj);
                         }
                         else {
                             example = JSON.stringify(obj,null,2);
