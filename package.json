@@ -32,7 +32,7 @@
     "jgexml": "^0.3.9",
     "markdown-it": "^10.0.0",
     "yaml": "^1.7.0",
-    "yargs": "^14.0.0"
+    "yargs": "^15.3.0"
   },
   "devDependencies": {
     "node-readfiles": "^0.2.0"
