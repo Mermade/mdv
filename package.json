@@ -29,9 +29,11 @@
   "dependencies": {
     "abnf": "0.0.5",
     "cheerio": "^0.22.0",
-    "jgexml": "^0.3.9",
+    "jgexml": "^0.4.1",
     "markdown-it": "^10.0.0",
-    "yaml": "^1.7.0",
+    "open": "^7.0.0",
+    "rich-text-diff": "^0.2.3",
+    "yaml": "^1.9.2",
     "yargs": "^14.0.0"
   },
   "devDependencies": {
