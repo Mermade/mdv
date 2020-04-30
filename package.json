@@ -29,7 +29,7 @@
   "dependencies": {
     "abnf": "0.0.5",
     "cheerio": "^0.22.0",
-    "jgexml": "^0.4.1",
+    "jgexml": "^0.4.2",
     "markdown-it": "^10.0.0",
     "open": "^7.0.0",
     "rich-text-diff": "^0.2.3",
