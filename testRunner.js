@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 // @ts-check
 'use strict';
 
@@ -60,12 +62,12 @@ function checkOutput(output) {
 }
 
 function check(file,force,expectFailure) {
-    var result = false;
+    let result = false;
     options.expectFailure = expectFailure;
     options.source = file;
 
-    var components = file.split(path.sep);
-    var name = components[components.length-1];
+    let components = file.split(path.sep);
+    let name = components[components.length-1];
 
     if ((name.endsWith('.md')) || force) {
 
@@ -73,7 +75,7 @@ function check(file,force,expectFailure) {
 
         var srcStr = fs.readFileSync(path.resolve(file),options.encoding);
         var output = {failed:true};
-        var result = false;
+        result = false;
         try {
             output = mdv.validate(srcStr,options);
             result = checkOutput(output);

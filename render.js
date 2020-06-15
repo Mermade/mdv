@@ -1,3 +1,8 @@
+#!/usr/bin/env node
+
+// @ts-check
+'use strict';
+
 const fs = require('fs');
 const url = require('url');
 const markdown = require('markdown-it')({linkify: true, html: true});

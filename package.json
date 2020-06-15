@@ -4,7 +4,8 @@
   "description": "Markdown Validator",
   "main": "index.js",
   "scripts": {
-    "test": "node testRunner -f test/fail test/pass"
+    "test": "node testRunner -f test/fail test/pass",
+    "lint": "npx eslint *.js"
   },
   "bin": {
     "mdv": "./mdv.js"
