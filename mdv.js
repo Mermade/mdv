@@ -3,12 +3,13 @@
 // @ts-check
 'use strict';
 
-var fs = require('fs');
-var util = require('util');
+const fs = require('fs');
+const util = require('util');
+const yaml = require('yaml');
 
-var validator = require('./index.js');
+const validator = require('./index.js');
 
-var argv = require('yargs')
+const argv = require('yargs')
     .boolean('debug')
     .alias('d','debug')
     .describe('debug','enable debug mode')
@@ -22,24 +23,27 @@ var argv = require('yargs')
     .boolean('warnings')
     .alias('w','warnings')
     .describe('warnings','enable warnings')
+    .boolean('yaml')
+    .alias('y','yaml')
+    .describe('yaml','output in YAML not JSON')
     .require(1)
     .strict()
     .argv;
 
-var exitCode = 0;
-var options = argv;
-for (var a of argv._) {
-    var s = fs.readFileSync(a,'utf8');
+let exitCode = 0;
+const options = argv;
+for (let a of argv._) {
+    const s = fs.readFileSync(a,'utf8');
     options.source = a;
-    var result = validator.validate(s,options);
+    const result = validator.validate(s,options);
 
     if (options.save) {
         fs.writeFileSync(a+'.html',options.html,'utf8');
         delete options.html;
     }
 
-    var ok = true;
-    for (var p in result) {
+    let ok = true;
+    for (let p in result) {
         if (typeof result[p] == 'number') {
             if (result[p]) ok = false
             else delete result[p];
@@ -54,7 +58,12 @@ for (var a of argv._) {
         }
     }
     if (!ok) {
-        console.log(util.inspect(result));
+        if (argv.yaml) {
+          console.log(yaml.stringify(result));
+        }
+        else {
+          console.log(util.inspect(result,{depth:null}));
+        }
         exitCode = 1;
     }
 

@@ -28,7 +28,7 @@ function parseExamples(s,options) {
                     }
                     var obj = {};
                     try {
-                        obj = yaml.parse(example);
+                        obj = yaml.parse(example,{prettyErrors:true});
                         if (extension === 'yaml') {
                             example = yaml.stringify(obj);
                         }
@@ -39,8 +39,8 @@ function parseExamples(s,options) {
                     }
                     catch (ex) {
                         let entry = {};
-                        entry.lineStart = lineStart;
-                        entry.lineEnd = lineNo;
+                        entry.lineStart = parseInt(lineStart,10);
+                        entry.lineEnd = parseInt(lineNo,10);
                         entry.extension = extension;
                         entry.message = ex.message;
                         result.push(entry);
@@ -53,8 +53,8 @@ function parseExamples(s,options) {
                    if (options.debug) console.log(JSON.stringify(obj));
                    if (Object.keys(obj).length !== 1) {
                         let entry = {};
-                        entry.lineStart = lineStart;
-                        entry.lineEnd = lineNo;
+                        entry.lineStart = parseInt(lineStart,10);
+                        entry.lineEnd = parseInt(lineNo,10);
                         entry.extension = extension;
                         entry.message = 'No root element found';
                         result.push(entry);
@@ -66,8 +66,8 @@ function parseExamples(s,options) {
                     abnf.Parse(example,function(err,rules){
                         if (err) {
                             let entry = {};
-                            entry.lineStart = lineStart;
-                            entry.lineEnd = lineNo;
+                            entry.lineStart = parseInt(lineStart,10);
+                            entry.lineEnd = parseInt(lineNo,10);
                             entry.extension = extension;
                             entry.message = err;
                             result.push(entry);
@@ -85,6 +85,7 @@ function parseExamples(s,options) {
                 inFence = true;
                 lineStart = lineNo;
                 extension = line.split('`').pop().trim().toLowerCase();
+                if (extension === 'yml') extension = 'yaml';
                 if (!extension) extension = 'txt';
             }
         }
