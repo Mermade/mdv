@@ -97,7 +97,7 @@ function validate(s, options) {
         if (href) {
             var local = true;
             var u = url.parse(href);
-            if (u.protocol || (u.path && u.path.startsWith('/')) || (u.path && u.path.startsWith('..'))) local = false;
+            if (u.protocol || (u.path && u.path.startsWith('/')) || href.startsWith('./') || href.startsWith('../')) local = false;
             if (indexAnyOf(href,['.md','.html','.json','.yaml','.yml'])>=0) local = false; // FIXME buggy for relative links to files like `LICENSE`
             if (local) {
                 var localRefNoHash = !href.startsWith('#');
