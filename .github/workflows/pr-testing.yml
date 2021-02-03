@@ -7,7 +7,7 @@ on:
 jobs:
   test:
     if: github.event.pull_request.draft == false #to not run the check if the PR is a draft
-    name: Testing on ${{ matrix.os }}
+    name: Testing on ${{ matrix.os }} using ${{ matrix.node }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
