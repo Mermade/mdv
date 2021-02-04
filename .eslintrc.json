@@ -79,7 +79,10 @@
         "key-spacing": "off",
         "keyword-spacing": "off",
         "line-comment-position": "off",
-        "linebreak-style": 0,
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
         "lines-around-comment": "off",
         "lines-around-directive": "off",
         "max-depth": "off",
