@@ -20,6 +20,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
+      - name: Audit package-lock.json
+        run: npx package-lock-audit ./package-lock.json
       - name: Install dependencies
         run: npm install
       - name: Run test
