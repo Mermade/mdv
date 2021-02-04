@@ -64,10 +64,10 @@ for (let a of argv._) {
             }
             if (!ok) {
                 if (argv.yaml) {
-                console.log(yaml.stringify(result));
+                    console.log(yaml.stringify(result));
                 }
                 else {
-                console.log(util.inspect(result,{depth:null}));
+                    console.log(util.inspect(result,{depth:null}));
                 }
                 exitCode = 1;
             }
