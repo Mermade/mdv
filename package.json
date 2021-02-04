@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "node testRunner -f test/fail test/pass",
-    "lint": "npx eslint *.js"
+    "lint": "npx eslint *.js",
+    "lint:fix": "npx eslint *.js --fix"
   },
   "bin": {
     "mdv": "./mdv.js"
@@ -30,6 +31,7 @@
   "dependencies": {
     "abnf": "0.0.5",
     "cheerio": "^1.0.0-rc.3",
+    "glob": "^7.1.6",
     "jgexml": "^0.4.2",
     "markdown-it": "^11.0.0",
     "open": "^7.1.0",
