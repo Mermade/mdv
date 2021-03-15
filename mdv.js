@@ -37,12 +37,12 @@ const options = argv;
 for (let a of argv._) {
     const files = glob.sync(a, { debug: !!options.debug });
     for (let file of files) {
-        const s = fs.readFileSync(a,'utf8');
+        const s = fs.readFileSync(file,'utf8');
         options.source = file;
         const result = validator.validate(s,options);
 
         if (options.save) {
-            fs.writeFileSync(a+'.html',options.html,'utf8');
+            fs.writeFileSync(file+'.html',options.html,'utf8');
             delete options.html;
         }
 
