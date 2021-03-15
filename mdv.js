@@ -6,7 +6,6 @@
 const fs = require('fs');
 const util = require('util');
 const yaml = require('yaml');
-const glob = require("glob");
 
 const validator = require('./index.js');
 

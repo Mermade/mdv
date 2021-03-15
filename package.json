@@ -31,7 +31,6 @@
   "dependencies": {
     "abnf": "0.0.5",
     "cheerio": "^1.0.0-rc.3",
-    "glob": "^7.1.6",
     "jgexml": "^0.4.2",
     "markdown-it": "^12.0.4",
     "open": "^7.1.0",
