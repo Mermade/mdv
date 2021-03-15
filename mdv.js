@@ -34,45 +34,43 @@ const argv = require('yargs')
 let exitCode = 0;
 const options = argv;
 
-
 for (let a of argv._) {
-    glob(a, options, function (er, files) {
-        for (let file of files) {
-            const s = fs.readFileSync(a,'utf8');
-            options.source = file;
-            const result = validator.validate(s,options);
+    const files = glob.sync(a, { debug: !!options.debug });
+    for (let file of files) {
+        const s = fs.readFileSync(file,'utf8');
+        options.source = file;
+        const result = validator.validate(s,options);
 
-            if (options.save) {
-                fs.writeFileSync(a+'.html',options.html,'utf8');
-                delete options.html;
-            }
+        if (options.save) {
+            fs.writeFileSync(file+'.html',options.html,'utf8');
+            delete options.html;
+        }
 
-            let ok = true;
-            for (let p in result) {
-                if (typeof result[p] == 'number') {
-                    if (result[p]) ok = false
-                    else delete result[p];
-                }
-                else if (Array.isArray(result[p])) {
-                    if (result[p].length) ok = false
-                    else delete result[p];
-                }
-                else if (typeof result[p] == 'object') {
-                    if (Object.keys(result[p]).length) ok = false
-                    else delete result[p];
-                }
+        let ok = true;
+        for (let p in result) {
+            if (typeof result[p] == 'number') {
+                if (result[p]) ok = false
+                else delete result[p];
             }
-            if (!ok) {
-                if (argv.yaml) {
-                    console.log(yaml.stringify(result));
-                }
-                else {
-                    console.log(util.inspect(result,{depth:null}));
-                }
-                exitCode = 1;
+            else if (Array.isArray(result[p])) {
+                if (result[p].length) ok = false
+                else delete result[p];
+            }
+            else if (typeof result[p] == 'object') {
+                if (Object.keys(result[p]).length) ok = false
+                else delete result[p];
             }
         }
-    })
+        if (!ok) {
+            if (argv.yaml) {
+                console.log(yaml.stringify(result));
+            }
+            else {
+                console.log(util.inspect(result,{depth:null}));
+            }
+            exitCode = 1;
+        }
+    }
 }
 
 
