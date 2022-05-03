@@ -33,7 +33,7 @@
     "cheerio": "^1.0.0-rc.10",
     "glob": "^7.1.6",
     "jgexml": "^0.4.2",
-    "markdown-it": "^12.1.0",
+    "markdown-it": "^13.0.1",
     "open": "^8.2.1",
     "rich-text-diff": "^0.2.3",
     "yaml": "^1.9.2",
