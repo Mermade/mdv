@@ -36,7 +36,7 @@
     "markdown-it": "^12.1.0",
     "open": "^8.2.1",
     "rich-text-diff": "^0.2.3",
-    "yaml": "^1.9.2",
+    "yaml": "^2.1.0",
     "yargs": "^14.0.0"
   },
   "devDependencies": {
