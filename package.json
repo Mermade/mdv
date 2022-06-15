@@ -40,6 +40,6 @@
     "yargs": "^14.0.0"
   },
   "devDependencies": {
-    "node-readfiles": "^0.2.0"
+    "node-readfiles": "^0.3.1"
   }
 }
