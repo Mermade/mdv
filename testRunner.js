@@ -11,6 +11,7 @@ var mdv = require('./index.js');
 
 var argv = require('yargs')
     .usage('testRunner [options] [{path-to-specs}...]')
+    .demand(1)
     .boolean('debug')
     .alias('d','debug')
     .describe('debug','pass debug flag to mdv')

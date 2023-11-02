@@ -29,8 +29,10 @@ function gfmLink(text) {
     text = text.split('&gt;').join('');
     text = text.split('<').join('');
     text = text.split('>').join('');
+    text = text.split('(').join('');
+    text = text.split(')').join('');
     text = text.split(' ').join('-');
-    return text;
+    return text.toLowerCase();
 }
 
 function define(anchors,name,auto,suffix) {
